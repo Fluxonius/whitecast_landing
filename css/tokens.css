@@ -1,0 +1,82 @@
+/* ============================================================
+   WHITECAST — DESIGN TOKENS
+   Colors · Spacing · Type scale · Radii · Shadows · Motion
+   ============================================================ */
+
+:root {
+  /* ---------- Color ---------- */
+  --bg: #0a0a0a;
+  --bg-raised: #0d0d0f;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.05);
+
+  --text: #f5f5f4;
+  --text-dim: #a3a3a0;
+  --text-faint: #6b6b68;
+
+  --accent: #a855f7;
+  --accent-soft: #8b5cf6;
+  --accent-cyan: #67e8f9;
+  --accent-glow: rgba(168, 85, 247, 0.35);
+  --accent-glow-faint: rgba(168, 85, 247, 0.12);
+
+  --hairline: #242424;
+  --hairline-soft: rgba(255, 255, 255, 0.07);
+
+  --gradient-accent: linear-gradient(135deg, #a855f7 0%, #e9d5ff 60%, #ffffff 100%);
+  --gradient-accent-cyan: linear-gradient(135deg, #8b5cf6 0%, #a855f7 45%, #67e8f9 100%);
+  --gradient-card: linear-gradient(160deg, rgba(168, 85, 247, 0.08) 0%, rgba(255, 255, 255, 0.02) 45%, rgba(103, 232, 249, 0.04) 100%);
+
+  /* ---------- Typography ---------- */
+  --font-title: 'Nippo', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Departure Mono', 'SF Mono', 'Courier New', monospace;
+
+  /* Type scale */
+  --fs-hero: clamp(2.5rem, 8vw, 7rem);
+  --fs-h2: clamp(2rem, 4.5vw, 3.5rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.625rem);
+  --fs-lead: clamp(1.0625rem, 1.5vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-mono: 0.8125rem;
+  --fs-micro: 0.6875rem;
+
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+
+  --ls-tight: -0.03em;
+  --ls-mono: 0.08em;
+
+  /* ---------- Spacing ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-section: clamp(5rem, 12vw, 10rem);
+  --container: 76rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---------- Shadows / glass ---------- */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px var(--accent-glow-faint);
+  --blur-glass: 14px;
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 200ms;
+  --dur-med: 450ms;
+  --dur-slow: 800ms;
+}
