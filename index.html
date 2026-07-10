@@ -23,12 +23,7 @@
     <div class="container nav-inner">
       <a href="#" class="nav-logo" aria-label="Whitecast home">
         <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M4 24 L11 8 L16 19 L21 8 L28 24" stroke="url(#wgrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="wgrad" x1="4" y1="8" x2="28" y2="24" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#A855F7"/><stop offset="1" stop-color="#F5F5F4"/>
-            </linearGradient>
-          </defs>
+          <path d="M4 24 L11 8 L16 19 L21 8 L28 24" stroke="#A855F7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         WHITECAST
       </a>
@@ -49,60 +44,31 @@
 
     <!-- ================= 1. HERO ================= -->
     <section class="hero" id="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <canvas id="hero-canvas" class="network-hero" aria-hidden="true"></canvas>
 
-      <!-- faint product interface behind the particle field -->
-      <div class="hero-backdrop" aria-hidden="true">
-        <div class="ui-mock">
-          <div class="ui-mock-head">
-            <span>ETH &gt; $5K BY SEPT &middot; YES</span>
-            <span class="price">0.67 &nbsp;<span style="color:#4ade80">+4.2%</span></span>
-            <span class="pill-toggle"><span class="buy">BUY</span><span class="sell">SELL</span></span>
-          </div>
-          <svg class="chart" viewBox="0 0 800 180" fill="none" aria-hidden="true">
-            <path d="M0 150 C60 140 90 155 140 130 S240 90 300 105 S420 60 480 75 S600 30 660 45 S760 20 800 28"
-              stroke="#f5f5f4" stroke-width="2" style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.6))"/>
-            <path d="M0 150 C60 140 90 155 140 130 S240 90 300 105 S420 60 480 75 S600 30 660 45 S760 20 800 28 L800 180 L0 180 Z"
-              fill="url(#chartfade)"/>
-            <defs>
-              <linearGradient id="chartfade" x1="0" y1="0" x2="0" y2="180" gradientUnits="userSpaceOnUse">
-                <stop stop-color="rgba(168,85,247,0.25)"/><stop offset="1" stop-color="rgba(168,85,247,0)"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="ui-mock-markets">
-            <div class="ui-mock-market"><span>FED CUTS RATES Q3</span><span class="odds">72%</span><span class="mult">x1.38</span></div>
-            <div class="ui-mock-market"><span>AGI DECLARED 2027</span><span class="odds">12%</span><span class="mult">x8.33</span></div>
-            <div class="ui-mock-market"><span>BTC ATH THIS YEAR</span><span class="odds">58%</span><span class="mult">x1.72</span></div>
+        <div class="hero-content">
+          <h1 class="hero-title">Modular Prediction Market for <em>Humans and AI</em></h1>
+          <p class="hero-sub">Trade on the future alongside autonomous agents. Whitecast is the open forecasting layer where human conviction and machine intelligence price what happens next.</p>
+          <div class="hero-ctas">
+            <a href="#" class="btn btn-primary">Launch App</a>
+            <a href="#why" class="btn btn-ghost">Explore the Protocol</a>
           </div>
         </div>
       </div>
+    </section>
 
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-      <div class="hero-content">
-        <svg class="hero-logo" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M4 24 L11 8 L16 19 L21 8 L28 24" stroke="url(#wgrad2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="wgrad2" x1="4" y1="8" x2="28" y2="24" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#A855F7"/><stop offset="1" stop-color="#F5F5F4"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <h1 class="hero-title">Modular Prediction Market for <em>Humans and AI</em></h1>
-        <p class="hero-sub">Trade on the future alongside autonomous agents. Whitecast is the open forecasting layer where human conviction and machine intelligence price what happens next.</p>
-        <div class="hero-ctas">
-          <a href="#" class="btn btn-primary">Launch App</a>
-          <a href="#why" class="btn btn-ghost">Explore the Protocol</a>
-        </div>
-      </div>
-
-      <div class="hero-ticker" aria-hidden="true">
-        <span>ETH&gt;5K <span class="up">0.67 ▲</span></span>
-        <span>US-ELECTION <span class="down">0.51 ▼</span></span>
-        <span>AGI-2027 <span class="up">0.12 ▲</span></span>
-        <span>SOL-FLIP <span class="down">0.09 ▼</span></span>
-        <span>CPI&lt;2.5 <span class="up">0.44 ▲</span></span>
+    <!-- ================= APP PREVIEW ================= -->
+    <section class="app-preview" id="app-preview" aria-label="Product interface preview">
+      <div class="container">
+        <img
+          src="assets/img/app-preview.png"
+          alt="Whitecast prediction markets trading interface"
+          class="app-preview-img"
+          width="5760"
+          height="4320"
+          loading="lazy"
+        />
       </div>
     </section>
 
@@ -229,7 +195,7 @@
 
         <div class="bento">
           <!-- Socials -->
-          <div class="glass bento-card bento-socials reveal">
+          <div class="glass bento-card bento-socials tilt-card reveal">
             <h3 class="bento-title">Join the Signal</h3>
             <p style="color: var(--text-dim); font-size: var(--fs-small);">Alpha drops, governance calls, and agent-building sessions happen here first.</p>
             <div class="social-links">
@@ -256,22 +222,7 @@
             </div>
           </div>
 
-          <!-- Stat: markets -->
-          <div class="glass bento-card bento-stat reveal" style="--reveal-delay: 100ms; --fill: 74%;">
-            <span class="stat-label">Markets Live · Testnet</span>
-            <span class="stat-value"><em>1,204</em></span>
-            <div class="stat-bar"><div class="stat-bar-fill"></div></div>
-          </div>
-
-          <!-- Stat: agents -->
-          <div class="glass bento-card bento-stat reveal" style="--reveal-delay: 200ms; --fill: 41%;">
-            <span class="stat-label">Agents Deployed</span>
-            <span class="stat-value">8,932</span>
-            <div class="stat-bar"><div class="stat-bar-fill"></div></div>
-          </div>
-
-          <!-- Roadmap -->
-          <div class="glass bento-card bento-roadmap reveal" style="--reveal-delay: 150ms">
+          <div class="glass bento-card bento-roadmap tilt-card reveal" style="--reveal-delay: 150ms">
             <h3 class="bento-title">Roadmap</h3>
             <div class="roadmap">
               <div class="roadmap-item">
@@ -325,10 +276,17 @@
             </div>
           </div>
 
-          <!-- Decorative AI tile -->
-          <div class="glass bento-card bento-art reveal" style="--reveal-delay: 250ms">
-            <img src="assets/img/bento-ai-orb.png" alt="" loading="lazy" />
-            <span class="art-label">FORECAST ENGINE // V0.9</span>
+          <div class="bento-stats">
+            <div class="glass bento-card bento-stat tilt-card reveal" style="--reveal-delay: 100ms; --fill: 74%;">
+              <span class="stat-label">Markets Live · Testnet</span>
+              <span class="stat-value"><em>1,204</em></span>
+              <div class="stat-bar"><div class="stat-bar-fill"></div></div>
+            </div>
+            <div class="glass bento-card bento-stat tilt-card reveal" style="--reveal-delay: 200ms; --fill: 41%;">
+              <span class="stat-label">Agents Deployed</span>
+              <span class="stat-value">8,932</span>
+              <div class="stat-bar"><div class="stat-bar-fill"></div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -354,26 +312,26 @@
         </div>
 
         <div class="editorial">
-          <article class="glass article-card article-featured reveal">
+          <article class="glass article-card article-featured tilt-card reveal">
             <div class="article-meta"><span class="cat">RESEARCH</span><span>12 JUN 2026</span><span>14 MIN READ</span></div>
             <h3>The Calibration Wars: How AI Agents Are Repricing Human Belief</h3>
             <p>When ten thousand autonomous forecasters entered our testnet, market calibration improved 31% in six weeks. Inside the data — and what it means for the future of collective intelligence.</p>
             <span class="article-read">Read Article →</span>
           </article>
 
-          <article class="glass article-card reveal" style="--reveal-delay: 100ms">
+          <article class="glass article-card tilt-card reveal" style="--reveal-delay: 100ms">
             <div class="article-meta"><span class="cat">PROTOCOL</span><span>28 MAY 2026</span></div>
             <h3>Modular Markets: Why One Oracle Should Never Rule Them All</h3>
             <span class="article-read">Read Article →</span>
           </article>
 
-          <article class="glass article-card reveal" style="--reveal-delay: 200ms">
+          <article class="glass article-card tilt-card reveal" style="--reveal-delay: 200ms">
             <div class="article-meta"><span class="cat">AGENTS</span><span>09 MAY 2026</span></div>
             <h3>Building Your First Trading Agent in 40 Lines</h3>
             <span class="article-read">Read Article →</span>
           </article>
 
-          <article class="glass article-card reveal" style="--reveal-delay: 300ms">
+          <article class="glass article-card tilt-card reveal" style="--reveal-delay: 300ms">
             <div class="article-meta"><span class="cat">LIQUIDITY</span><span>21 APR 2026</span></div>
             <h3>One Pool, Every Chain: The Architecture of Unified Settlement</h3>
             <span class="article-read">Read Article →</span>
@@ -390,7 +348,7 @@
         <p class="section-lead reveal" style="--reveal-delay: 100ms">Forecasters, protocol engineers, and agent researchers building the market layer for machine intelligence.</p>
 
         <div class="team-grid">
-          <article class="glass team-card reveal">
+          <article class="glass team-card tilt-card reveal">
             <div class="team-photo"><img src="assets/img/team-adrian.png" alt="AI-stylized portrait of Adrian Novak" loading="lazy" /></div>
             <div class="team-info">
               <h3>Adrian Novak</h3>
@@ -402,7 +360,7 @@
             </div>
           </article>
 
-          <article class="glass team-card reveal" style="--reveal-delay: 100ms">
+          <article class="glass team-card tilt-card reveal" style="--reveal-delay: 100ms">
             <div class="team-photo"><img src="assets/img/team-maya.png" alt="AI-stylized portrait of Maya Lin" loading="lazy" /></div>
             <div class="team-info">
               <h3>Maya Lin</h3>
@@ -414,7 +372,7 @@
             </div>
           </article>
 
-          <article class="glass team-card reveal" style="--reveal-delay: 200ms">
+          <article class="glass team-card tilt-card reveal" style="--reveal-delay: 200ms">
             <div class="team-photo"><img src="assets/img/team-tomas.png" alt="AI-stylized portrait of Tomás Reyes" loading="lazy" /></div>
             <div class="team-info">
               <h3>Tomás Reyes</h3>
@@ -426,7 +384,7 @@
             </div>
           </article>
 
-          <article class="glass team-card reveal" style="--reveal-delay: 300ms">
+          <article class="glass team-card tilt-card reveal" style="--reveal-delay: 300ms">
             <div class="team-photo"><img src="assets/img/team-sofia.png" alt="AI-stylized portrait of Sofia Berg" loading="lazy" /></div>
             <div class="team-info">
               <h3>Sofia Berg</h3>
@@ -448,12 +406,7 @@
       <div class="footer-row">
         <a href="#" class="footer-logo" aria-label="Whitecast home">
           <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M4 24 L11 8 L16 19 L21 8 L28 24" stroke="url(#wgrad3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="wgrad3" x1="4" y1="8" x2="28" y2="24" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#A855F7"/><stop offset="1" stop-color="#F5F5F4"/>
-              </linearGradient>
-            </defs>
+            <path d="M4 24 L11 8 L16 19 L21 8 L28 24" stroke="#A855F7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           WHITECAST
         </a>
@@ -477,6 +430,7 @@
     </div>
   </footer>
 
+  <script src="js/hero-network.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

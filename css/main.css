@@ -27,17 +27,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle grain over everything */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2000;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 img {
   max-width: 100%;
   display: block;
@@ -136,7 +125,6 @@ h1, h2, h3 {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15), 0 0 24px var(--accent-glow-faint);
 }
 
 .btn-ghost {
@@ -147,20 +135,16 @@ h1, h2, h3 {
 
 .btn-ghost:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 20px var(--accent-glow-faint);
   transform: translateY(-2px);
 }
 
 /* ---------- Glass card primitive ---------- */
 .glass {
   background: var(--bg-card);
-  border: 1px solid var(--hairline-soft);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(var(--blur-glass));
-  -webkit-backdrop-filter: blur(var(--blur-glass));
   box-shadow: var(--shadow-card);
-  transition: transform var(--dur-med) var(--ease-out),
-    box-shadow var(--dur-med) var(--ease-out),
+  transition: box-shadow var(--dur-med) var(--ease-out),
     border-color var(--dur-med) var(--ease-out),
     background var(--dur-med) var(--ease-out);
 }
@@ -184,9 +168,7 @@ h1, h2, h3 {
 }
 
 .nav.scrolled {
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg);
   border-bottom-color: var(--hairline);
 }
 
@@ -237,142 +219,112 @@ h1, h2, h3 {
    1. HERO
    ============================================================ */
 .hero {
-  min-height: 100vh;
-  min-height: 100svh;
+  position: relative;
+  min-height: 75svh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-block: 0;
+  padding: 5rem var(--gutter) 2rem;
   overflow: hidden;
+}
+
+.hero-inner {
+  position: relative;
+  width: min(52rem, 100%);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(clamp(2rem, 12vh, 8rem));
 }
 
 #hero-canvas {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-/* Faint product screenshot behind the particles */
-.hero-backdrop {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  opacity: 0.35;
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 72%);
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 72%);
-}
-
-.hero-backdrop .ui-mock {
-  transform: perspective(1200px) rotateX(18deg) scale(1.05);
-  filter: saturate(0.8);
-}
-
-.hero-glow {
-  position: absolute;
-  z-index: 0;
-  width: 60vw;
-  height: 60vw;
-  max-width: 900px;
-  max-height: 900px;
   left: 50%;
-  top: 40%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, var(--accent-glow-faint) 0%, transparent 65%);
-  pointer-events: none;
+  top: 0;
+  transform: translate(-50%, -52%);
+  z-index: 1;
+  display: block;
+  pointer-events: auto;
 }
 
 .hero-content {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-5);
-  padding-inline: var(--gutter);
-  margin-top: 9vh;
+  gap: var(--space-4);
+  width: 100%;
+  padding-top: clamp(10rem, 22vw, 16rem);
+  pointer-events: none;
 }
 
-.hero-logo {
-  width: 64px;
-  height: 64px;
-  filter: drop-shadow(0 0 18px var(--accent-glow));
-  animation: hero-in var(--dur-slow) var(--ease-out) both;
+.hero-content a,
+.hero-content button {
+  pointer-events: auto;
 }
 
 .hero-title {
   font-size: var(--fs-hero);
   font-weight: 500;
-  max-width: 15ch;
-  line-height: var(--lh-tight);
-  animation: hero-in var(--dur-slow) var(--ease-out) 150ms both;
+  max-width: 22ch;
+  line-height: var(--lh-heading);
 }
 
 .hero-title em {
   font-style: normal;
-  background: var(--gradient-accent-cyan);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
 .hero-sub {
-  font-size: var(--fs-lead);
+  font-size: var(--fs-body);
   color: var(--text-dim);
-  max-width: 38rem;
-  animation: hero-in var(--dur-slow) var(--ease-out) 350ms both;
+  max-width: 32rem;
 }
 
 .hero-ctas {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
   justify-content: center;
-  animation: hero-in var(--dur-slow) var(--ease-out) 650ms both;
-}
-
-.hero-ticker {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  gap: var(--space-6);
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: var(--ls-mono);
-  text-transform: uppercase;
-  color: var(--text-faint);
-  white-space: nowrap;
-  animation: hero-in var(--dur-slow) var(--ease-out) 900ms both;
-}
-
-.hero-ticker .up { color: #4ade80; }
-.hero-ticker .down { color: #f87171; }
-
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-top: var(--space-2);
 }
 
 @media (max-width: 767px) {
-  .hero-ticker { display: none; }
-  /* Particle canvas is disabled on mobile (see JS); keep backdrop faint for legibility */
-  .hero-backdrop { opacity: 0.12; }
+  .hero {
+    min-height: auto;
+    padding-block: 5rem 2rem;
+  }
+  .hero-inner {
+    transform: none;
+  }
+  .hero-content {
+    padding-top: 0;
+  }
+  #hero-canvas {
+    display: none;
+  }
 }
 
-/* ---------- Trading UI mock (hero backdrop + agentic visual) ---------- */
+/* ============================================================
+   APP PREVIEW — product screenshot
+   ============================================================ */
+.app-preview {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-7);
+}
+
+.app-preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- Legacy ui-mock (agentic visual) ---------- */
 .ui-mock {
   width: min(920px, 92vw);
   background: var(--bg-raised);
@@ -462,34 +414,18 @@ h1, h2, h3 {
 
 .tilt-card {
   position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.why-grid .tilt-card {
   padding: var(--space-6);
   min-height: 340px;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  transform-style: preserve-3d;
-  will-change: transform;
-  overflow: hidden;
-  background-image: var(--gradient-card);
-}
-
-/* parallax light that follows the cursor (position set from JS) */
-.tilt-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    400px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(168, 85, 247, 0.16),
-    transparent 55%
-  );
-  opacity: 0;
-  transition: opacity var(--dur-med) var(--ease-out);
-  pointer-events: none;
-}
-
-.tilt-card:hover::before {
-  opacity: 1;
 }
 
 .tilt-icon {
@@ -498,8 +434,8 @@ h1, h2, h3 {
   display: grid;
   place-items: center;
   border-radius: var(--radius-md);
-  border: 1px solid var(--hairline-soft);
-  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid var(--hairline);
+  background: var(--bg-raised);
   color: var(--accent);
   transform: translateZ(40px);
 }
@@ -529,7 +465,7 @@ h1, h2, h3 {
   .why-grid {
     grid-template-columns: 1fr;
   }
-  .tilt-card {
+  .why-grid .tilt-card {
     min-height: auto;
   }
 }
@@ -555,7 +491,7 @@ h1, h2, h3 {
   border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-card), 0 0 60px var(--accent-glow-faint);
+  box-shadow: var(--shadow-card);
 }
 
 .agent-console-head {
@@ -670,15 +606,19 @@ h1, h2, h3 {
 .agentic-progress-fill {
   width: 100%;
   height: 0%;
-  background: var(--gradient-accent-cyan);
+  background: var(--accent);
   transition: height 200ms linear;
 }
 
 .agentic-feature {
+  min-height: 42vh;
   padding: var(--space-5) 0;
   border-bottom: 1px solid var(--hairline-soft);
   opacity: 0.35;
   transition: opacity var(--dur-med) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .agentic-feature:last-child {
@@ -722,23 +662,26 @@ h1, h2, h3 {
    ============================================================ */
 .bento {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(150px, auto);
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
   margin-top: var(--space-8);
+  perspective: 1200px;
+  align-items: start;
 }
 
 .bento-card {
   padding: var(--space-5);
-  background-image: var(--gradient-card);
+  background: var(--bg-card);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
 }
 
-.bento-card:hover {
-  transform: translateY(-4px);
+.bento-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
 }
 
 .bento-title {
@@ -749,8 +692,8 @@ h1, h2, h3 {
 
 /* Socials tile */
 .bento-socials {
-  grid-column: span 2;
-  grid-row: span 2;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .social-links {
@@ -776,7 +719,7 @@ h1, h2, h3 {
 .social-link:hover {
   border-color: var(--accent);
   color: var(--text);
-  background: var(--accent-glow-faint);
+  background: var(--bg-card-hover);
   transform: translateY(-2px);
 }
 
@@ -788,8 +731,13 @@ h1, h2, h3 {
 
 /* Roadmap tile */
 .bento-roadmap {
-  grid-column: span 2;
-  grid-row: span 3;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.bento-stats {
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .roadmap {
@@ -807,7 +755,7 @@ h1, h2, h3 {
   top: 8px;
   bottom: 8px;
   width: 1px;
-  background: linear-gradient(to bottom, var(--accent), var(--hairline));
+  background: var(--hairline);
 }
 
 .roadmap-item {
@@ -830,7 +778,6 @@ h1, h2, h3 {
 
 .roadmap-item:first-child .roadmap-dot {
   background: var(--accent);
-  box-shadow: 0 0 12px var(--accent-glow);
 }
 
 .roadmap-q {
@@ -891,7 +838,7 @@ h1, h2, h3 {
 .stat-bar-fill {
   height: 100%;
   width: 0;
-  background: var(--gradient-accent-cyan);
+  background: var(--accent);
   border-radius: 2px;
   transition: width 1.2s var(--ease-out);
 }
@@ -929,11 +876,10 @@ h1, h2, h3 {
   letter-spacing: var(--ls-mono);
   text-transform: uppercase;
   color: var(--text-dim);
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(8px);
+  background: var(--bg);
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--hairline-soft);
+  border: 1px solid var(--hairline);
 }
 
 @media (max-width: 900px) {
@@ -942,8 +888,8 @@ h1, h2, h3 {
   }
   .bento-socials,
   .bento-roadmap,
-  .bento-art {
-    grid-column: span 1;
+  .bento-stats {
+    grid-column: 1;
     grid-row: auto;
   }
 }
@@ -975,6 +921,7 @@ h1, h2, h3 {
   grid-template-columns: 1.2fr 1fr;
   gap: var(--space-4);
   margin-top: var(--space-7);
+  perspective: 1200px;
 }
 
 .article-card {
@@ -985,40 +932,14 @@ h1, h2, h3 {
   padding: var(--space-6);
   min-height: 260px;
   overflow: hidden;
-  background-image: var(--gradient-card);
+  background: var(--bg-card);
   cursor: pointer;
-}
-
-.article-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(120% 100% at 80% 0%, var(--accent-glow-faint), transparent 55%);
-  opacity: 0;
-  transition: opacity var(--dur-med) var(--ease-out);
-}
-
-.article-card:hover::after {
-  opacity: 1;
-}
-
-.article-card:hover {
-  transform: translateY(-4px);
 }
 
 .article-featured {
   grid-row: span 3;
   min-height: 520px;
   justify-content: flex-end;
-}
-
-.article-featured::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(80% 60% at 30% 20%, rgba(103, 232, 249, 0.12), transparent 60%),
-    radial-gradient(70% 60% at 80% 70%, rgba(168, 85, 247, 0.18), transparent 55%);
 }
 
 .article-meta {
@@ -1100,56 +1021,14 @@ h1, h2, h3 {
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
   margin-top: var(--space-8);
+  perspective: 1200px;
 }
 
 .team-card {
   position: relative;
   overflow: hidden;
   padding: 0;
-  background-image: var(--gradient-card);
-}
-
-/* holographic border sweep */
-.team-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    transparent 0%,
-    var(--accent) 12%,
-    var(--accent-cyan) 22%,
-    transparent 36%
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity var(--dur-med) var(--ease-out);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.team-card:hover::before {
-  opacity: 1;
-  animation: holo-spin 3.5s linear infinite;
-}
-
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes holo-spin {
-  to { --angle: 360deg; }
-}
-
-.team-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-card-hover), 0 0 60px var(--accent-glow-faint);
+  background: var(--bg-card);
 }
 
 .team-photo {
@@ -1306,14 +1185,12 @@ h1, h2, h3 {
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+  transition: opacity var(--dur-slow) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal.in-view {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* ---------- Reduced motion ---------- */
@@ -1330,12 +1207,8 @@ h1, h2, h3 {
   }
   .reveal {
     opacity: 1;
-    transform: none;
   }
   #hero-canvas {
     display: none;
-  }
-  .hero-glow {
-    background: radial-gradient(circle, var(--accent-glow-faint) 0%, transparent 65%);
   }
 }
