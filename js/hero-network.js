@@ -6,7 +6,7 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  if (prefersReducedMotion || isMobile) return;
+  if (prefersReducedMotion) return;
 
   const config = {
   "background": "#070b16",
@@ -55860,19 +55860,23 @@
     return rotationPhase.accumulatedTurns;
   }
 
-  canvas.addEventListener("pointermove", (event) => {
-    const rect = canvas.getBoundingClientRect();
-    hover.active = true;
-    hover.x = ((event.clientX - rect.left) / rect.width) * viewWidth;
-    hover.y = ((event.clientY - rect.top) / rect.height) * viewHeight;
-    hover.targetYaw = ((hover.x - viewWidth / 2) / viewWidth) * 0.45;
-    hover.targetPitch = ((hover.y - viewHeight / 2) / viewHeight) * 0.3;
-  });
-  canvas.addEventListener("pointerleave", () => {
-    hover.active = false;
-    hover.targetYaw = 0;
-    hover.targetPitch = 0;
-  });
+  if (!isMobile) {
+    canvas.addEventListener("pointermove", (event) => {
+      const rect = canvas.getBoundingClientRect();
+      hover.active = true;
+      hover.x = ((event.clientX - rect.left) / rect.width) * viewWidth;
+      hover.y = ((event.clientY - rect.top) / rect.height) * viewHeight;
+      hover.targetYaw = ((hover.x - viewWidth / 2) / viewWidth) * 0.45;
+      hover.targetPitch = ((hover.y - viewHeight / 2) / viewHeight) * 0.3;
+    });
+    canvas.addEventListener("pointerleave", () => {
+      hover.active = false;
+      hover.targetYaw = 0;
+      hover.targetPitch = 0;
+    });
+  } else {
+    canvas.style.pointerEvents = "none";
+  }
 
   function fitCanvasToViewport() {
     const rect = heroSection.getBoundingClientRect();
