@@ -113,13 +113,27 @@
      marker so steps never skip while scrolling.
      ============================================================ */
   const features = Array.from(document.querySelectorAll('.agentic-feature'));
-  const consoleLines = Array.from(document.querySelectorAll('.agent-line'));
+  const panels = Array.from(document.querySelectorAll('.agent-panel'));
+  const modalTitle = document.getElementById('agent-modal-title');
+  const inputAttach = document.getElementById('agent-input-attach');
   const progressFill = document.getElementById('agentic-progress-fill');
   const featureList = document.getElementById('agentic-features');
 
   function setActiveStep(step) {
     features.forEach((f) => f.classList.toggle('active', Number(f.dataset.step) === step));
-    consoleLines.forEach((l) => l.classList.toggle('active', Number(l.dataset.step) <= step));
+    panels.forEach((p) => {
+      const isActive = Number(p.dataset.step) === step;
+      p.classList.toggle('active', isActive);
+      p.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+
+    const activePanel = panels.find((p) => Number(p.dataset.step) === step);
+    if (activePanel && modalTitle) {
+      modalTitle.textContent = activePanel.dataset.title || 'New Urchin chat';
+    }
+    if (inputAttach) {
+      inputAttach.hidden = step !== 5;
+    }
   }
 
   if (features.length && featureList) {

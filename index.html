@@ -44,16 +44,14 @@
 
     <!-- ================= 1. HERO ================= -->
     <section class="hero" id="hero">
-      <div class="hero-inner">
-        <canvas id="hero-canvas" class="network-hero" aria-hidden="true"></canvas>
+      <canvas id="hero-canvas" class="network-hero" aria-hidden="true"></canvas>
 
-        <div class="hero-content">
-          <h1 class="hero-title">Modular Prediction Market for <em>Humans and AI</em></h1>
-          <p class="hero-sub">Trade on the future alongside autonomous agents. Whitecast is the open forecasting layer where human conviction and machine intelligence price what happens next.</p>
-          <div class="hero-ctas">
-            <a href="#" class="btn btn-primary">Launch App</a>
-            <a href="#why" class="btn btn-ghost">Explore the Protocol</a>
-          </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Modular Prediction Market for <em>Humans and AI</em></h1>
+        <p class="hero-sub">Trade on the future alongside autonomous agents. Whitecast is the open forecasting layer where human conviction and machine intelligence price what happens next.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary">Launch App</a>
+          <a href="#why" class="btn btn-ghost">Explore the Protocol</a>
         </div>
       </div>
     </section>
@@ -128,27 +126,230 @@
 
         <div class="agentic-wrap">
           <div class="agentic-visual reveal">
-            <div class="agent-console">
-              <div class="agent-console-head">
-                <span class="dot" aria-hidden="true"></span>
-                <span>AGENT://WC-0x4F2A &middot; ONLINE</span>
+            <div class="agent-modal" id="agent-modal" aria-live="polite">
+              <div class="agent-modal-head">
+                <span class="agent-modal-title" id="agent-modal-title">New Urchin chat</span>
+                <svg class="agent-modal-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-              <div class="agent-console-body" id="agent-console-body">
-                <div class="agent-line" data-step="0"><span class="t">14:02:11</span><span>SCANNING 1,204 MARKETS &middot; <span class="val">3 SIGNALS</span></span></div>
-                <div class="agent-line" data-step="0"><span class="t">14:02:14</span><span>NEWS DELTA: FED MINUTES &middot; RELEVANCE <span class="val">0.91</span></span></div>
-                <div class="agent-line" data-step="1"><span class="t">14:02:19</span><span>THESIS: RATE CUT Q3 UNDERPRICED @ <span class="val">0.64</span></span></div>
-                <div class="agent-line" data-step="1"><span class="t">14:02:20</span><span>FAIR VALUE EST &middot; <span class="val">0.71 ± 0.03</span></span></div>
-                <div class="agent-line" data-step="2"><span class="t">14:02:22</span><span>RISK CHECK: EXPOSURE 4.1% &lt; CAP <span class="val">5.0%</span> ✓</span></div>
-                <div class="agent-line" data-step="2"><span class="t">14:02:22</span><span>KELLY SIZE &middot; <span class="val">312 USDC</span></span></div>
-                <div class="agent-line" data-step="3"><span class="t">14:02:23</span><span>ORDER FILLED: YES @ 0.645 &middot; <span class="val">x1.55</span></span></div>
-                <div class="agent-line" data-step="3"><span class="t">14:02:23</span><span>ROUTE: BASE → UNIFIED POOL &middot; SLIP <span class="val">0.1%</span></span></div>
-                <div class="agent-line" data-step="4"><span class="t">14:02:25</span><span>JOURNAL UPDATED &middot; STRATEGY DRIFT <span class="val">-0.02</span></span></div>
-                <div class="agent-line" data-step="4"><span class="t">14:02:25</span><span>NEXT REVIEW IN <span class="val">00:14:35</span></span></div>
+
+              <div class="agent-modal-body" id="agent-modal-body">
+                <!-- Step 0: Personalized AI Trading Agent -->
+                <div class="agent-panel active" data-step="0" data-title="New Urchin chat">
+                  <div class="agent-panel-scroll">
+                    <div class="agent-logo" aria-hidden="true">
+                      <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M4 24 L11 8 L16 19 L21 8 L28 24" stroke="#A855F7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h4 class="agent-msg-title">Your personal Urchin agent</h4>
+                    <p class="agent-msg-text">Here are a few things which I can do, or ask me anything</p>
+                    <div class="agent-chips">
+                      <span class="agent-chip">What is your opinion about this market?</span>
+                      <span class="agent-chip">What is best position for my budget?</span>
+                      <span class="agent-chip">Help me build a prediction strategy</span>
+                      <span class="agent-chip">Recommend influencers</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 1: Discovers & Evaluates Markets Automatically -->
+                <div class="agent-panel" data-step="1" data-title="Urchins market recommendations">
+                  <div class="agent-panel-scroll">
+                    <div class="agent-bubble agent-bubble-user">Which markets would you recommend me?</div>
+                    <h4 class="agent-msg-title">Urchins market recommendations</h4>
+                    <p class="agent-msg-text">Based on your budget and previous predictions I would recommend you those positions:</p>
+                    <div class="agent-market-card">
+                      <div class="agent-market-head">
+                        <span class="agent-market-thumb" style="--thumb: linear-gradient(135deg, #334155, #64748b)"></span>
+                        <span class="agent-market-q">Will Litecoin break $400 by 2026?</span>
+                      </div>
+                      <div class="agent-yesno">
+                        <span class="agent-yes">Yes 50¢</span>
+                        <span class="agent-no">No 50¢</span>
+                      </div>
+                      <div class="agent-chance">
+                        <div class="agent-chance-bar"><span style="width: 78%"></span></div>
+                        <div class="agent-chance-labels"><span>77.9% chance</span><span>22.1%</span></div>
+                      </div>
+                    </div>
+                    <div class="agent-market-card">
+                      <div class="agent-market-head">
+                        <span class="agent-market-thumb" style="--thumb: linear-gradient(135deg, #1e293b, #475569)"></span>
+                        <span class="agent-market-q">Will Binance Coin top $1,000 in 2026?</span>
+                      </div>
+                      <div class="agent-yesno">
+                        <span class="agent-yes">Yes 50¢</span>
+                        <span class="agent-no">No 50¢</span>
+                      </div>
+                      <div class="agent-chance">
+                        <div class="agent-chance-bar agent-chance-bar-warn"><span style="width: 40%"></span></div>
+                        <div class="agent-chance-labels"><span>40.3% chance</span><span>59.7%</span></div>
+                      </div>
+                    </div>
+                    <span class="agent-chip agent-chip-outline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="currentColor" stroke-width="1.5"/></svg> 9 sources</span>
+                    <div class="agent-chips agent-chips-wrap">
+                      <span class="agent-chip">Enter recommended positions</span>
+                      <span class="agent-chip">What is best position for my budget?</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 2: Executes Trades Based on User Preferences -->
+                <div class="agent-panel" data-step="2" data-title="Urchins market recommendations">
+                  <div class="agent-panel-scroll">
+                    <div class="agent-bubble agent-bubble-user">Enter recommended positions</div>
+                    <p class="agent-msg-text">Ok, I'll prepare predictions for you! Please specify your budget for those positions.</p>
+                    <div class="agent-bubble agent-bubble-confirm">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#a9ff8d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Confirmed budget: $20
+                      <svg class="agent-modal-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <p class="agent-msg-text">Now let me summarize the predictions.</p>
+                    <div class="agent-trade-card">
+                      <div class="agent-trade-row">
+                        <span class="agent-trade-label">Will Litecoin break $400 by 2026?</span>
+                      </div>
+                      <div class="agent-edge-bar">
+                        <div class="agent-edge-labels"><span>Market 46¢</span><span>Fair 52¢</span></div>
+                        <div class="agent-edge-track"><span class="agent-edge-fill" style="width: 49%"></span><span class="agent-edge-gap" style="left: 49%; width: 8%"></span></div>
+                        <div class="agent-edge-meta"><span class="agent-edge-tag">Moderate mispricing</span><span class="agent-edge-val">6¢ edge</span></div>
+                      </div>
+                      <p class="agent-trade-detail">Buy <strong>Yes</strong> for <strong>77.9¢</strong> per token on sum of <strong>$11.52</strong>. Expected return: <strong>$36.21</strong></p>
+                      <hr class="agent-divider" />
+                      <div class="agent-edge-bar">
+                        <div class="agent-edge-labels"><span>Market 60¢</span><span>Fair 63¢</span></div>
+                        <div class="agent-edge-track"><span class="agent-edge-fill agent-edge-fill-warn" style="width: 61%"></span><span class="agent-edge-gap" style="left: 61%; width: 4%"></span></div>
+                        <div class="agent-edge-meta"><span class="agent-edge-tag agent-edge-tag-muted">Minor mispricing</span><span class="agent-edge-val">3¢ edge</span></div>
+                      </div>
+                      <p class="agent-trade-detail">Buy <strong>No</strong> for <strong>59.7¢</strong> per token on sum of <strong>$9.48</strong>. Expected return: <strong>$24.21</strong></p>
+                      <button type="button" class="agent-btn-primary" tabindex="-1">Confirm trades</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 3: Customizable Strategies & Risk Profiles -->
+                <div class="agent-panel" data-step="3" data-title="Prediction Strategy">
+                  <div class="agent-panel-scroll">
+                    <div class="agent-bubble agent-bubble-user">Help me build a prediction strategy</div>
+                    <h4 class="agent-msg-title">Building Prediction Strategy</h4>
+                    <p class="agent-msg-text">Let's build your edge. Before I can help, I need to know:</p>
+                    <div class="agent-strategy-card">
+                      <div class="agent-strategy-group">
+                        <span class="agent-strategy-label">Your goal</span>
+                        <div class="agent-option-row">
+                          <span class="agent-option active">Max profit</span>
+                          <span class="agent-option">Stable ROI</span>
+                          <span class="agent-option">Learning</span>
+                        </div>
+                      </div>
+                      <div class="agent-strategy-group">
+                        <span class="agent-strategy-label">Market focus</span>
+                        <div class="agent-option-row">
+                          <span class="agent-option active">Crypto only</span>
+                          <span class="agent-option">Mixed markets</span>
+                        </div>
+                      </div>
+                      <div class="agent-strategy-group">
+                        <span class="agent-strategy-label">Risk appetite</span>
+                        <div class="agent-option-row">
+                          <span class="agent-option">Low</span>
+                          <span class="agent-option">Medium</span>
+                          <span class="agent-option active">Aggressive</span>
+                        </div>
+                      </div>
+                      <div class="agent-strategy-group">
+                        <span class="agent-strategy-label">Instructions</span>
+                        <div class="agent-textarea">Buy only highly unlikely predictions for small amounts.</div>
+                      </div>
+                      <button type="button" class="agent-btn-primary" tabindex="-1">Confirm</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 4: Removes Research & Decision Friction -->
+                <div class="agent-panel" data-step="4" data-title="Prediction Strategy">
+                  <div class="agent-panel-scroll">
+                    <div class="agent-bubble agent-bubble-confirm">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#a9ff8d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Strategy input provided
+                    </div>
+                    <p class="agent-msg-text">I got your profile. Now let's prepare the execution.</p>
+                    <div class="agent-strategy-card">
+                      <div class="agent-strategy-header">
+                        <span class="agent-msg-title agent-msg-title-sm">Smart-tail strategy</span>
+                        <span class="agent-risk-badge">High risk</span>
+                      </div>
+                      <p class="agent-roi">+58.64%</p>
+                      <p class="agent-roi-sub">ROI for last year. Updated Today, 14:54. Simulated performance</p>
+                      <div class="agent-chart" aria-hidden="true">
+                        <svg viewBox="0 0 360 120" preserveAspectRatio="none">
+                          <defs><linearGradient id="agentChartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#67e8f9" stop-opacity="0.35"/><stop offset="100%" stop-color="#67e8f9" stop-opacity="0"/></linearGradient></defs>
+                          <path d="M0 90 C40 85 60 70 100 65 S180 40 220 35 S300 15 360 20 L360 120 L0 120 Z" fill="url(#agentChartGrad)"/>
+                          <path d="M0 90 C40 85 60 70 100 65 S180 40 220 35 S300 15 360 20" fill="none" stroke="#67e8f9" stroke-width="2"/>
+                          <circle cx="360" cy="20" r="4" fill="#67e8f9"/>
+                        </svg>
+                      </div>
+                      <p class="agent-strategy-desc"><strong>Strategy description</strong><br/>Hunt low-probability crypto contracts at 5–20¢. Small bets, asymmetric upside. Let the long shots pay.</p>
+                      <hr class="agent-divider" />
+                      <div class="agent-deposit">
+                        <div><span class="agent-deposit-label">Amount to deposit</span><span class="agent-deposit-sub">Available: $87.12</span></div>
+                        <span class="agent-deposit-val">$25</span>
+                      </div>
+                      <div class="agent-stoploss">
+                        <div><span class="agent-deposit-label">Stop-loss</span><span class="agent-deposit-sub">Sell when my wallet drops by (10–50%)</span></div>
+                        <span class="agent-stoploss-input">25%</span>
+                      </div>
+                      <div class="agent-warning">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 5v4M8 11h.01M1.5 13h13L8 2 1.5 13z" stroke="#ff8ea7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        You may lose up-to <strong>$12.5</strong> while executing this strategy
+                      </div>
+                      <button type="button" class="agent-btn-primary" tabindex="-1">Confirm strategy</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 5: End-to-End Market Participation via AI -->
+                <div class="agent-panel" data-step="5" data-title="Urchins opinion about BTC Price">
+                  <div class="agent-panel-scroll">
+                    <div class="agent-bubble agent-bubble-user">What is your opinion about this market?</div>
+                    <h4 class="agent-msg-title">Urchins opinion</h4>
+                    <p class="agent-msg-text">BTC above $87K by July 2 — <strong>I'm at NO, 35% chance.</strong></p>
+                    <p class="agent-msg-text agent-msg-text-dim">Fed won't cut June 17. BTC needs 13% in 36 days, stuck in a tight range. No macro trigger visible.</p>
+                    <p class="agent-msg-text agent-msg-text-dim">But knowing you — you've got a high-risk appetite. This is exactly the type of low-probability bet you like. If you're playing it, keep position size small.</p>
+                    <span class="agent-chip agent-chip-outline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="currentColor" stroke-width="1.5"/></svg> 16 sources</span>
+                    <div class="agent-sources">
+                      <div class="agent-sources-banner">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        All the news are coming from verified sources
+                      </div>
+                      <div class="agent-source-item">
+                        <span class="agent-source-dot"></span>
+                        <div><span class="agent-source-site">news.bitcoin</span><span class="agent-source-headline">Bitcoin Price Prediction Markets Show $100K Odds at 12% for 2026</span></div>
+                      </div>
+                      <div class="agent-source-item">
+                        <span class="agent-source-dot" style="background: #dc2626"></span>
+                        <div><span class="agent-source-site">cnbc</span><span class="agent-source-headline">Fed holds rates steady but with highest level of dissent since 1992</span></div>
+                      </div>
+                      <div class="agent-source-item">
+                        <span class="agent-source-dot" style="background: #eab308"></span>
+                        <div><span class="agent-source-site">binance</span><span class="agent-source-headline">Bitcoin price prediction 2025–2031: Will BTC hit $150k soon?</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="agent-stats">
-                <div class="agent-stat"><span class="label">P&amp;L 30D</span><span class="value accent">+18.4%</span></div>
-                <div class="agent-stat"><span class="label">WIN RATE</span><span class="value">63%</span></div>
-                <div class="agent-stat"><span class="label">MARKETS</span><span class="value">1,204</span></div>
+
+              <div class="agent-modal-foot">
+                <div class="agent-input" id="agent-input">
+                  <div class="agent-input-attach" id="agent-input-attach" hidden>
+                    <span class="agent-input-tag">Will Bitcoin reach $87,000 by end of 2 July 2026?</span>
+                  </div>
+                  <div class="agent-input-row">
+                    <span class="agent-input-placeholder">Ask me anything...</span>
+                    <div class="agent-input-actions">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.4 11.5l-8.2 8.2a5 5 0 0 1-7.1-7.1l9.2-9.2a3 3 0 0 1 4.2 4.2l-9.2 9.2a1 1 0 0 1-1.4-1.4l8.5-8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="agent-input-send"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 12V4M5 7l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -158,28 +359,33 @@
 
             <div class="agentic-feature" data-step="0">
               <span class="num">01</span>
-              <h3>Continuous Market Intelligence</h3>
-              <p>Your agent ingests order flow, news, and onchain data across every Whitecast market in real time — surfacing mispriced probabilities the moment they appear.</p>
+              <h3>Personalized AI Trading Agent</h3>
+              <p>Spin up a dedicated agent that learns your preferences, risk tolerance, and trading style — then acts on your behalf across every Whitecast market, 24/7.</p>
             </div>
             <div class="agentic-feature" data-step="1">
               <span class="num">02</span>
-              <h3>Thesis Generation, Explained</h3>
-              <p>Every trade starts with a written thesis. The agent shows its estimated fair value, confidence interval, and the evidence behind it — no black-box bets.</p>
+              <h3>Discovers &amp; Evaluates Markets Automatically</h3>
+              <p>Your agent continuously scans thousands of markets, surfaces mispriced opportunities, and ranks them by edge — so you never miss a signal.</p>
             </div>
             <div class="agentic-feature" data-step="2">
               <span class="num">03</span>
-              <h3>Risk Limits You Control</h3>
-              <p>Set exposure caps, drawdown limits, and category filters once. The agent sizes every position within your bounds and halts itself if limits are breached.</p>
+              <h3>Executes Trades Based on User Preferences</h3>
+              <p>Set your budget, confirm positions, and let the agent size and route every trade within the bounds you define — with full transparency before execution.</p>
             </div>
             <div class="agentic-feature" data-step="3">
               <span class="num">04</span>
-              <h3>Best-Route Execution</h3>
-              <p>Orders route across the unified multichain pool for the tightest fill, with slippage protection and atomic settlement on the chain you choose.</p>
+              <h3>Customizable Strategies &amp; Risk Profiles</h3>
+              <p>Define goals, market focus, risk appetite, and custom instructions. Your agent builds a strategy profile that matches exactly how you want to play.</p>
             </div>
             <div class="agentic-feature" data-step="4">
               <span class="num">05</span>
-              <h3>Learns From Every Outcome</h3>
-              <p>Resolved markets feed back into your agent's journal. It tracks calibration, corrects drift, and gets measurably better at forecasting with every cycle.</p>
+              <h3>Removes Research &amp; Decision Friction</h3>
+              <p>Simulated performance, stop-loss controls, and clear risk warnings — the agent handles the analysis so you can confirm and go in seconds.</p>
+            </div>
+            <div class="agentic-feature" data-step="5">
+              <span class="num">06</span>
+              <h3>End-to-End Market Participation via AI</h3>
+              <p>From opinion to execution — your agent synthesizes verified sources, delivers a reasoned thesis, and keeps you in the loop at every step of the trade lifecycle.</p>
             </div>
           </div>
         </div>
