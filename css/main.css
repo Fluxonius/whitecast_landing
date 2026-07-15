@@ -1,5 +1,5 @@
 /* ============================================================
-   WHITECAST — MAIN STYLES
+   WHITE PREDICT — MAIN STYLES
    Sections: base · nav · hero · why · agentic · bento ·
              aquarium · team · footer · reveal motion
    ============================================================ */
@@ -140,7 +140,7 @@ h1, h2, h3 {
 
 /* ---------- Glass card primitive ---------- */
 .glass {
-  background: var(--bg-card);
+  background-color: var(--bg-card);
   border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
@@ -150,7 +150,7 @@ h1, h2, h3 {
 }
 
 .glass:hover {
-  background: var(--bg-card-hover);
+  background-color: var(--bg-card-hover);
   box-shadow: var(--shadow-card-hover);
 }
 
@@ -398,7 +398,7 @@ h1, h2, h3 {
 }
 
 /* ============================================================
-   2. WHY WHITECAST — 3D tilt cards
+   2. WHY WHITE PREDICT — 3D tilt cards
    ============================================================ */
 .why-grid {
   display: grid;
@@ -1231,12 +1231,6 @@ h1, h2, h3 {
   position: relative;
 }
 
-.bento-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-
 .bento-title {
   font-family: var(--font-title);
   font-size: 1.15rem;
@@ -1251,7 +1245,7 @@ h1, h2, h3 {
 
 .social-links {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-3);
   margin-top: auto;
 }
@@ -1285,12 +1279,7 @@ h1, h2, h3 {
 /* Roadmap tile */
 .bento-roadmap {
   grid-column: 2;
-  grid-row: 1 / span 2;
-}
-
-.bento-stats {
-  grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
 }
 
 .roadmap {
@@ -1308,6 +1297,7 @@ h1, h2, h3 {
   top: 8px;
   bottom: 8px;
   width: 1px;
+  height: auto;
   background: var(--hairline);
 }
 
@@ -1325,6 +1315,7 @@ h1, h2, h3 {
   background: var(--bg-raised);
   flex-shrink: 0;
   margin-top: 4px;
+  margin-bottom: 0;
   position: relative;
   z-index: 1;
 }
@@ -1357,47 +1348,6 @@ h1, h2, h3 {
 .roadmap-item li::before {
   content: '— ';
   color: var(--text-faint);
-}
-
-/* Stat tiles */
-.bento-stat .stat-value {
-  font-family: var(--font-mono);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  color: var(--text);
-  margin-top: auto;
-}
-
-.bento-stat .stat-value em {
-  font-style: normal;
-  color: var(--accent);
-}
-
-.bento-stat .stat-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: var(--ls-mono);
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.stat-bar {
-  height: 4px;
-  background: var(--hairline);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: var(--space-3);
-}
-
-.stat-bar-fill {
-  height: 100%;
-  width: 0;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 1.2s var(--ease-out);
-}
-
-.in-view .stat-bar-fill {
-  width: var(--fill, 60%);
 }
 
 /* Decorative AI tile */
@@ -1440,8 +1390,7 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
   .bento-socials,
-  .bento-roadmap,
-  .bento-stats {
+  .bento-roadmap {
     grid-column: 1;
     grid-row: auto;
   }
@@ -1485,8 +1434,34 @@ h1, h2, h3 {
   padding: var(--space-6);
   min-height: 260px;
   overflow: hidden;
-  background: var(--bg-card);
+  background-color: var(--bg-card);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  isolation: isolate;
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.94) 0%,
+    rgba(10, 10, 10, 0.72) 34%,
+    rgba(10, 10, 10, 0.28) 62%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: background var(--dur-med) var(--ease-out);
+}
+
+.article-card::after {
+  content: none;
 }
 
 .article-featured {
@@ -1502,14 +1477,14 @@ h1, h2, h3 {
   font-size: var(--fs-micro);
   letter-spacing: var(--ls-mono);
   text-transform: uppercase;
-  color: var(--text-faint);
+  color: #fff;
   margin-bottom: var(--space-3);
   position: relative;
   z-index: 1;
 }
 
 .article-meta .cat {
-  color: var(--accent-cyan);
+  color: inherit;
 }
 
 .article-card h3 {
@@ -1543,7 +1518,7 @@ h1, h2, h3 {
   font-size: var(--fs-micro);
   letter-spacing: var(--ls-mono);
   text-transform: uppercase;
-  color: var(--accent);
+  color: #fff;
   opacity: 0;
   transform: translateY(6px);
   transition: opacity var(--dur-med) var(--ease-out), transform var(--dur-med) var(--ease-out);

@@ -1,14 +1,19 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Network Hero</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #070b16; }
+  body { display: flex; align-items: center; justify-content: center; }
+  .network-hero { display: block; }
+</style>
+</head>
+<body>
+<canvas class="network-hero" id="network-hero"></canvas>
+<script>
 (() => {
-  'use strict';
-
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  if (prefersReducedMotion) return;
-  
   const config = {
   "background": "#070b16",
   "circleOpacity": 73,
@@ -100047,8 +100052,8 @@
   "includeBackground": false,
   "width": 1080
 };
-const context = canvas.getContext('2d');
-  const heroSection = canvas.closest('.hero') || canvas.parentElement;
+  const canvas = document.getElementById("network-hero");
+  const context = canvas.getContext("2d");
   const designAspect = config.width / config.height;
   let viewWidth = config.width;
   let viewHeight = config.height;
@@ -100176,28 +100181,23 @@ const context = canvas.getContext('2d');
     return rotationPhase.accumulatedTurns;
   }
 
-  if (!isMobile) {
-    canvas.addEventListener("pointermove", (event) => {
-      const rect = canvas.getBoundingClientRect();
-      hover.active = true;
-      hover.x = ((event.clientX - rect.left) / rect.width) * viewWidth;
-      hover.y = ((event.clientY - rect.top) / rect.height) * viewHeight;
-      hover.targetYaw = ((hover.x - viewWidth / 2) / viewWidth) * 0.45;
-      hover.targetPitch = ((hover.y - viewHeight / 2) / viewHeight) * 0.3;
-    });
-    canvas.addEventListener("pointerleave", () => {
-      hover.active = false;
-      hover.targetYaw = 0;
-      hover.targetPitch = 0;
-    });
-  } else {
-    canvas.style.pointerEvents = "none";
-  }
+  canvas.addEventListener("pointermove", (event) => {
+    const rect = canvas.getBoundingClientRect();
+    hover.active = true;
+    hover.x = ((event.clientX - rect.left) / rect.width) * viewWidth;
+    hover.y = ((event.clientY - rect.top) / rect.height) * viewHeight;
+    hover.targetYaw = ((hover.x - viewWidth / 2) / viewWidth) * 0.45;
+    hover.targetPitch = ((hover.y - viewHeight / 2) / viewHeight) * 0.3;
+  });
+  canvas.addEventListener("pointerleave", () => {
+    hover.active = false;
+    hover.targetYaw = 0;
+    hover.targetPitch = 0;
+  });
 
   function fitCanvasToViewport() {
-    const rect = heroSection.getBoundingClientRect();
-    const viewportWidth = rect.width;
-    const viewportHeight = rect.height;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
     const viewportAspect = viewportWidth / viewportHeight;
 
     if (viewportAspect > designAspect) {
@@ -100357,4 +100357,6 @@ const context = canvas.getContext('2d');
 
   requestAnimationFrame(frame);
 })();
-
+</script>
+</body>
+</html>

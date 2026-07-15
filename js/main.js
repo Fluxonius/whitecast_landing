@@ -1,5 +1,5 @@
 /* ============================================================
-   WHITECAST — INTERACTIONS
+   WHITE PREDICT — INTERACTIONS
    (Hero network field lives in js/hero-network.js)
    1. Reveal-on-scroll (IntersectionObserver)
    2. Nav background on scroll
@@ -129,7 +129,7 @@
 
     const activePanel = panels.find((p) => Number(p.dataset.step) === step);
     if (activePanel && modalTitle) {
-      modalTitle.textContent = activePanel.dataset.title || 'New Urchin chat';
+      modalTitle.textContent = activePanel.dataset.title || 'New White Predict chat';
     }
     if (inputAttach) {
       inputAttach.hidden = step !== 5;
